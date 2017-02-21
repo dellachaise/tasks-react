@@ -1,5 +1,5 @@
-var path        = require('path'),
-  HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path'),
+    HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 module.exports = {
@@ -9,16 +9,16 @@ module.exports = {
         path: './dist'
     },
     module : {
-      loaders: [
-        {
-          test: /\.js$/,
-          exclude: /(node_modules)/,
-          loader: 'babel-loader',
-          query: {
-            presets: ['react']
-          }
-        }
-      ]
+        loaders: [
+            {
+                test: /\.js$/,
+                exclude: /(node_modules)/,
+                loader: 'babel-loader',
+                query: {
+                    presets: ['react']
+                }
+            }
+        ]
     },
     plugins: [new HtmlWebpackPlugin({
         template: path.join(__dirname, 'src', 'index.html')
