@@ -1,13 +1,21 @@
 {
-  "name": "pet-react",
-  "version": "0.0.1",
-  "description": "React sample",
-  "author": "Daria Liubymova <dellachaise@gmail.com>",
-  "repository": "github:dellachaise/tasks-react",
-  "scripts": {
-    "build": "webpack"
-  },
-  "devDependencies": {
-    "webpack": "^2.2.1"
-  }
+    "name": "pet-react",
+    "version": "0.0.1",
+    "description": "React sample",
+    "author": "Daria Liubymova <dellachaise@gmail.com>",
+    "repository": "github:dellachaise/tasks-react",
+    "scripts": {
+        "build": "webpack"
+    },
+    "devDependencies": {
+        "babel-core": "^6.23.1",
+        "babel-loader": "^6.3.2",
+        "babel-preset-react": "^6.23.0",
+        "html-webpack-plugin": "^2.28.0",
+        "webpack": "^2.2.1"
+    },
+    "dependencies": {
+        "react": "^15.4.2",
+        "react-dom": "^15.4.2"
+    }
 }
