@@ -3,6 +3,6 @@ import ReactDOM from 'react-dom';
 import List from './components/list'
 
 ReactDOM.render(
-  <List />,
-  document.getElementById('app')
+    <List />,
+    document.getElementById('app')
 );

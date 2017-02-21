@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-export default function list (){
+export default function List (){
     return (
         <ul>
             <li>1</li>
