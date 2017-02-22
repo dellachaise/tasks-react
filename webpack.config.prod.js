@@ -1,69 +1,27 @@
-const path = require('path'),
-    HtmlWebpackPlugin = require('html-webpack-plugin'),
-    webpack = require('webpack');
+const webpack = require('webpack'),
+    webpackConfig = require("./webpack.config.dev");
 
-module.exports = {
-    entry: './src/app.js',
-    output: {
-        filename: 'bundle.js',
-        path: path.join(__dirname, 'dist')
-    },
-    module : {
-        rules: [
+webpackConfig.plugins.push(
+    new webpack.DefinePlugin({
+        'process.env': {
+            'NODE_ENV': JSON.stringify('production')
+        }
+    }),
+    new webpack.optimize.UglifyJsPlugin()
+);
+
+webpackConfig.module.rules.push(
+    {
+        test: /\.html$/,
+        use: [
             {
-                test: /\.js$/,
-                exclude: /(node_modules)/,
-                use: [
-                    {
-                        loader: 'babel-loader',
-                        options: {
-                            presets: ['react']
-                        }
-                    }
-                ]
-            },
-            {
-                test: /\.css$/,
-                use: [
-                    {
-                        loader: 'style-loader'
-                    },
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            modules: true,
-                            localIdentName: '[name]__[local]___[hash:base64:5]'
-                        }
-                    }
-                ]
-            },
-            {
-                test: /\.html$/,
-                use: [
-                    {
-                        loader: 'html-loader',
-                        options: {
-                            minimize: true
-                        }
-                    }
-                ]
-      },
-        ]
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: path.join(__dirname, 'src', 'index.html')
-        }),
-        new webpack.DefinePlugin({
-            'process.env': {
-                'NODE_ENV': JSON.stringify('production')
+                loader: 'html-loader',
+                options: {
+                    minimize: true
+                }
             }
-        }),
-        new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.UglifyJsPlugin(),
-        new HtmlWebpackPlugin({
-            template: 'src/index.html'
-        })
-    ]
-};
+        ]
+    }
+);
 
+module.exports = webpackConfig;
