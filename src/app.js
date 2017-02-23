@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import List from "./components/list";
+import Root from "./components/root";
 
 ReactDOM.render(
-    <List />,
+    <Root />,
     document.getElementById("app")
 );
