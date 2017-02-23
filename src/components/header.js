@@ -1,14 +1,14 @@
 import React from "react";
 import styles from "../css/header.css";
-import { Link } from "react-router";
+import { Link, IndexLink } from "react-router";
 
 
 export default function Header () {
     return (
         <div className={styles.header}>
-            <Link to="/">TRAINEES</Link>
+            <IndexLink to="/" activeClassName={styles.active}>TRAINEES</IndexLink>
             <ul>
-                <li><Link to="/resume">All CV</Link></li>
+                <li><Link to="/resume" activeClassName={styles.active}>All CV</Link></li>
                 <li><a href="#">Front-End</a></li>
                 <li><a href="#">Ruby/Rails</a></li>
                 <li><a href="#">Python/Django</a></li>

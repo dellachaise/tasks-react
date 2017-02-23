@@ -20,3 +20,7 @@
             font-size: 1.25em;
             margin-left: 25px;
         }
+
+    .header a.active {
+        color: #800080;
+    }
