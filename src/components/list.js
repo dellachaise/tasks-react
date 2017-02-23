@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from '../css/list.css';
+import React from "react";
+import styles from "../css/list.css";
 
 
 export default function List (){

@@ -7,7 +7,7 @@
   "scripts": {
     "build": "webpack --config webpack.config.dev.js",
     "prod": "webpack --config webpack.config.prod.js",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server --config webpack.config.dev.js"
   },
   "devDependencies": {
     "babel-core": "^6.23.1",

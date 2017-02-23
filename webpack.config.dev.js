@@ -1,16 +1,16 @@
-const path = require('path'),
-    HtmlWebpackPlugin = require('html-webpack-plugin'),
-    webpack = require('webpack');
+const path = require("path"),
+    HtmlWebpackPlugin = require("html-webpack-plugin"),
+    webpack = require("webpack");
 
 
 module.exports = {
     entry: {
-        app: './src/app.js',
-        vendor: ['react', 'react-dom']
+        app: "./src/app.js",
+        vendor: ["react", "react-dom"]
     },
     output: {
-        filename: 'bundle.js',
-        path: path.join(__dirname, 'dist')
+        filename: "bundle.js",
+        path: path.join(__dirname, "dist")
     },
     module : {
         rules: [
@@ -19,9 +19,9 @@ module.exports = {
                 exclude: /(node_modules)/,
                 use: [
                     {
-                        loader: 'babel-loader',
+                        loader: "babel-loader",
                         options: {
-                            presets: ['react']
+                            presets: ["react"]
                         }
                     }
                 ]
@@ -30,13 +30,13 @@ module.exports = {
                 test: /\.css$/,
                 use: [
                     {
-                        loader: 'style-loader'
+                        loader: "style-loader"
                     },
                     {
-                        loader: 'css-loader',
+                        loader: "css-loader",
                         options: {
                             modules: true,
-                            localIdentName: '[name]__[local]___[hash:base64:5]'
+                            localIdentName: "[name]__[local]___[hash:base64:5]"
                         }
                     }
                 ]
@@ -45,7 +45,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.join(__dirname, 'src', 'index.html')
+            template: path.join(__dirname, "src", "index.html")
         }),
         new webpack.optimize.CommonsChunkPlugin({name: "vendor", filename: "vendor.bundle.js"})
     ]
