@@ -1,4 +1,4 @@
-const webpackConfig = require("./webpack.config.dev"),
+const webpackConfig = require("./webpack.config"),
     webpack = require("webpack");
 
 webpackConfig.plugins.push(

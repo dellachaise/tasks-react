@@ -1,13 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import List from "./list";
 import Header from "./header";
 
-export default function Root () {
+export default function Root (route) {
     return (
         <div>
             <Header />
-            <List />
+            {route.children}
         </div>
     );
 }
