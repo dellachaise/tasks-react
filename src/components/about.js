@@ -5,22 +5,24 @@ import "whatwg-fetch";
 export default class About extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            page: {}
+        };
     }
 
     componentDidMount() {
-        fetch('http://127.0.0.1:8000/pages/about/')
+        fetch("http://127.0.0.1:8000/pages/about/")
             .then(response => {
                 return response.json();
             })
             .then(json => {
-                this.setState(json);
+                this.setState({ page: json });
             })
     }
 
     render() {
         return (
-            <div>{this.state.content}</div>
+            <div>{this.state.page.content}</div>
         );
     }
 }

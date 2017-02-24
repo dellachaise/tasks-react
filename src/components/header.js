@@ -8,7 +8,7 @@ export default function Header () {
         <div className={styles.header}>
             <IndexLink to="/" activeClassName={styles.active}>TRAINEES</IndexLink>
             <ul>
-                <li><Link to="/resume" activeClassName={styles.active}>All CV</Link></li>
+                <li><Link to="/resumes" activeClassName={styles.active}>All CV</Link></li>
                 <li><Link to="/about" activeClassName={styles.active}>About</Link></li>
                 <li><a href="#">Front-End</a></li>
                 <li><a href="#">Ruby/Rails</a></li>
