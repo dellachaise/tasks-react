@@ -9,6 +9,7 @@ export default function Header () {
             <IndexLink to="/" activeClassName={styles.active}>TRAINEES</IndexLink>
             <ul>
                 <li><Link to="/resume" activeClassName={styles.active}>All CV</Link></li>
+                <li><Link to="/about" activeClassName={styles.active}>About</Link></li>
                 <li><a href="#">Front-End</a></li>
                 <li><a href="#">Ruby/Rails</a></li>
                 <li><a href="#">Python/Django</a></li>
