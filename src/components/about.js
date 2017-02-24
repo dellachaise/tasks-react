@@ -6,7 +6,7 @@ export default class About extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            posts: []
+            page: {}
         };
     }
 
@@ -16,13 +16,13 @@ export default class About extends React.Component {
                 return response.json();
             })
             .then(json => {
-                this.setState({ posts: json });
+                this.setState({ page: json });
             })
     }
 
     render() {
         return (
-            <div>{this.state.posts.content}</div>
+            <div>{this.state.page.content}</div>
         );
     }
 }

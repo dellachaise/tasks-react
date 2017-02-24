@@ -7,7 +7,7 @@ export default class Resumes extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            posts: []
+            resumes: []
         };
     }
 
@@ -17,18 +17,18 @@ export default class Resumes extends React.Component {
                 return response.json();
             })
             .then(json => {
-                this.setState({posts: json});
+                this.setState({resumes: json});
             })
     }
-    
+
     render() {
         return (
             <div>
-                {this.state.posts.map(post =>
-                    <div key={post.id}>
-                        <h1> {post.title} </h1>
-                        <p> {post.content} </p>
-                        <p> {moment(post.created_at).format('YYYY MM DD')} </p>
+                {this.state.resumes.map(resume =>
+                    <div key={resume.id}>
+                        <h1> {resume.title} </h1>
+                        <p> {resume.content} </p>
+                        <p> {moment(resume.created_at).format('YYYY MM DD')} </p>
                     </div>
                 )}
             </div>
