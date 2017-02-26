@@ -8,7 +8,8 @@ export default class Resumes extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            resumes: []
+            resumes: [],
+            loading: true
         };
     }
 
@@ -18,14 +19,20 @@ export default class Resumes extends React.Component {
                 return response.json();
             })
             .then(json => {
-                this.setState({resumes: json});
+                this.setState({
+                    resumes: json,
+                    loading: false
+                });
             })
     }
 
-    render() {
+    renderLoading() {
+        return <div>Loading...</div>;
+    }
+
+    renderPosts() {
         return (
             <div>
-                <Helmet title="Resumes" />
                 <h1>Resumes list</h1>
                 {this.state.resumes.map(resume =>
                     <div key={resume.id}>
@@ -34,6 +41,18 @@ export default class Resumes extends React.Component {
                         <p> {moment(resume.created_at).format('YYYY MM DD')} </p>
                     </div>
                 )}
+            </div>
+        )
+    }
+
+    render() {
+        return (
+            <div>
+                <Helmet title="Resumes" />
+                {this.state.loading ?
+                    this.renderLoading()
+                    : this.renderPosts()
+                }
             </div>
         );
     }
