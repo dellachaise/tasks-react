@@ -1,5 +1,6 @@
 import React from "react";
 import "whatwg-fetch";
+import Helmet from "react-helmet";
 
 
 export default class About extends React.Component {
@@ -22,7 +23,10 @@ export default class About extends React.Component {
 
     render() {
         return (
-            <div>{this.state.page.content}</div>
+            <div>
+                <Helmet title="About" />
+                {this.state.page.content}
+            </div>
         );
     }
 }
