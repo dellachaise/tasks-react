@@ -13,7 +13,7 @@ export default class About extends React.Component {
     }
 
     componentDidMount() {
-        fetch("http://127.0.0.1:8000/pages/about/?sleep=10")
+        fetch("http://127.0.0.1:8000/pages/about/")
             .then(response => {
                 return response.json();
             })
