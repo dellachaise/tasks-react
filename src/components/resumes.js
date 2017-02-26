@@ -1,6 +1,7 @@
 import React from "react";
 import "whatwg-fetch";
 import moment from "moment";
+import Helmet from "react-helmet";
 
 
 export default class Resumes extends React.Component {
@@ -24,6 +25,7 @@ export default class Resumes extends React.Component {
     render() {
         return (
             <div>
+                <Helmet title="Resumes" />
                 {this.state.resumes.map(resume =>
                     <div key={resume.id}>
                         <h1> {resume.title} </h1>

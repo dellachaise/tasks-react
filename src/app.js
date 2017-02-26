@@ -6,7 +6,6 @@ import Resumes from "./components/resumes";
 import About from "./components/about";
 import { Router, Route, IndexRoute, browserHistory} from "react-router";
 
-
 ReactDOM.render(
     <Router history={browserHistory}>
         <Route path="/" component={Root}>
