@@ -26,9 +26,10 @@ export default class Resumes extends React.Component {
         return (
             <div>
                 <Helmet title="Resumes" />
+                <h1>Resumes list</h1>
                 {this.state.resumes.map(resume =>
                     <div key={resume.id}>
-                        <h1> {resume.title} </h1>
+                        <h2> {resume.title} </h2>
                         <p> {resume.content} </p>
                         <p> {moment(resume.created_at).format('YYYY MM DD')} </p>
                     </div>

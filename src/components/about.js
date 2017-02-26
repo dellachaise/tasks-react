@@ -25,6 +25,7 @@ export default class About extends React.Component {
         return (
             <div>
                 <Helmet title="About" />
+                <h1>{this.state.page.title}</h1>
                 {this.state.page.content}
             </div>
         );
