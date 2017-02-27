@@ -1,7 +1,7 @@
 const webpackConfig = require("./webpack.config"),
     webpack = require("webpack"),
-    OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
-    ExtractTextPlugin = require('extract-text-webpack-plugin');
+    OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin"),
+    ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 webpackConfig.plugins.push(
     new webpack.DefinePlugin({
@@ -33,9 +33,9 @@ webpackConfig.module.rules.push(
     },
     {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({ 
-            fallback: 'style-loader', 
-            use: 'css-loader' 
+        use: ExtractTextPlugin.extract({
+            fallback: "style-loader",
+            use: "css-loader"
         })
     }
 );

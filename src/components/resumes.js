@@ -23,7 +23,7 @@ export default class Resumes extends React.Component {
                     resumes: json,
                     loading: false
                 });
-            })
+            });
     }
 
     renderLoading() {
@@ -38,11 +38,11 @@ export default class Resumes extends React.Component {
                     <div key={resume.id}>
                         <h2> {resume.title} </h2>
                         <p> {resume.content} </p>
-                        <p> {moment(resume.created_at).format('YYYY MM DD')} </p>
+                        <p> {moment(resume.created_at).format("YYYY MM DD")} </p>
                     </div>
                 )}
             </div>
-        )
+        );
     }
 
     render() {

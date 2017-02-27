@@ -18,11 +18,11 @@ export default class About extends React.Component {
                 return response.json();
             })
             .then(json => {
-                this.setState({ 
+                this.setState({
                     page: json,
                     loading: false
                  });
-            })
+            });
     }
 
     renderLoading() {
@@ -35,7 +35,7 @@ export default class About extends React.Component {
                 <h1>{this.state.page.title}</h1>
                 <p>{this.state.page.content}</p>
             </div>
-        )
+        );
     }
 
     render() {

@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "../css/header.css";
 import { Link, IndexLink } from "react-router";
 
