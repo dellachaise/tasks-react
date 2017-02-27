@@ -1,5 +1,7 @@
 const webpackConfig = require("./webpack.config"),
-    webpack = require("webpack");
+    webpack = require("webpack"),
+    OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
+    ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 webpackConfig.plugins.push(
     new webpack.DefinePlugin({
@@ -7,7 +9,14 @@ webpackConfig.plugins.push(
             "NODE_ENV": JSON.stringify("production")
         }
     }),
-    new webpack.optimize.UglifyJsPlugin()
+    new webpack.optimize.UglifyJsPlugin({
+        comments: false
+    }),
+    new ExtractTextPlugin("[name].css"),
+    new OptimizeCssAssetsPlugin({
+        assetNameRegExp: /\.css$/,
+        cssProcessorOptions: { discardComments: { removeAll: true } }
+    })
 );
 
 webpackConfig.module.rules.push(
@@ -21,6 +30,13 @@ webpackConfig.module.rules.push(
                 }
             }
         ]
+    },
+    {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({ 
+            fallback: 'style-loader', 
+            use: 'css-loader' 
+        })
     }
 );
 
