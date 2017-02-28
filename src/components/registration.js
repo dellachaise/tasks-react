@@ -1,5 +1,6 @@
 import React from "react";
 import Helmet from "react-helmet";
+import {post} from "../utils/api";
 
 
 export default class Registration extends React.Component {
@@ -33,29 +34,10 @@ export default class Registration extends React.Component {
             return list;
         }
 
-        function parseJSON(response) {
-            return new Promise(function (resolve, reject) {
-                response.json().
-                    then(data => {
-                        return resolve({
-                            "json": data,
-                            "status": response.status
-                        });
-                    }, reject);
-            });
-        }
-
         event.preventDefault();
-        fetch("http://127.0.0.1:8000/users/", {
-            method: "post",
-            headers: {
-                "Content-Type": "application/json"
-            },
-
-            body: JSON.stringify(formData)
-            })
-            .then(parseJSON)
+        post("users/", formData)
             .then(data => {
+                console.log(data);
                 if (data.status >= 400 && data.status < 500) {
                     let errorsList = parseErrors(data.json);
                     this.setState({

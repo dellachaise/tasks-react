@@ -2,6 +2,7 @@ import React from "react";
 import "whatwg-fetch";
 import moment from "moment";
 import Helmet from "react-helmet";
+import api from "../utils/api";
 
 
 export default class Resumes extends React.Component {
@@ -14,17 +15,10 @@ export default class Resumes extends React.Component {
     }
 
     componentDidMount() {
-        fetch("http://127.0.0.1:8000/resumes/", {
-            headers: {
-                "Authorization": "JWT <token>"
-            }
-        })
-            .then(response => {
-                return response.json();
-            })
-            .then(json => {
+        api("resumes/")
+            .then(data => {
                 this.setState({
-                    resumes: json,
+                    resumes: data.json,
                     loading: false
                 });
             });
