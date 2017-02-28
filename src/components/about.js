@@ -1,6 +1,7 @@
 import React from "react";
 import "whatwg-fetch";
 import Helmet from "react-helmet";
+import api from "../utils/api";
 
 
 export default class About extends React.Component {
@@ -13,13 +14,10 @@ export default class About extends React.Component {
     }
 
     componentDidMount() {
-        fetch("http://127.0.0.1:8000/pages/about/")
-            .then(response => {
-                return response.json();
-            })
-            .then(json => {
+        api("pages/about/")
+            .then(data => {
                 this.setState({
-                    page: json,
+                    page: data.json,
                     loading: false
                  });
             });

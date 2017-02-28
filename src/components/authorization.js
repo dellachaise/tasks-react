@@ -3,20 +3,16 @@ import Helmet from "react-helmet";
 import {post} from "../utils/api";
 
 
-export default class Registration extends React.Component {
+export default class Authorization extends React.Component {
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.state = {
-            errorsList: []
-        };
     }
 
     handleSubmit(event) {
         let formData = {
             "username": this.username.value,
-            "password": this.password.value,
-            "email": this.email.value
+            "password": this.password.value
         };
 
         function parseErrors (obj) {
@@ -35,14 +31,19 @@ export default class Registration extends React.Component {
         }
 
         event.preventDefault();
-        post("users/", formData)
+        post("api-token-auth/", formData)
             .then(data => {
-                console.log(data);
                 if (data.status >= 400 && data.status < 500) {
                     let errorsList = parseErrors(data.json);
                     this.setState({
                         errorsList: errorsList
                      });
+                } else if (data.status >= 200 && data.status < 400) {
+                    if (typeof Storage !== "undefined") {
+                        localStorage.setItem("token", data.json.token);
+                    } else {
+                        console.log("Sorry! No Web Storage support..");
+                    }
                 }
               })
             .catch(error => {
@@ -53,16 +54,12 @@ export default class Registration extends React.Component {
             });
     }
 
+
     render(){
         return (
             <div>
-                <Helmet title="Registration" />
-                <h1>Registration</h1>
-                <ul>
-                    {this.state.errorsList.map((error, index) =>
-                        <li key={index}>{error}</li>
-                    )}
-                </ul>
+                <Helmet title="Authorization" />
+                <h1>Authorization</h1>
                 <form onSubmit={this.handleSubmit}>
                     <div>
                         <label htmlFor="username">Username</label>
@@ -72,11 +69,7 @@ export default class Registration extends React.Component {
                         <label htmlFor="password">Password</label>
                         <input type="password" ref={password => this.password = password}/>
                     </div>
-                    <div>
-                        <label htmlFor="email">Email</label>
-                        <input type="email" ref={email => this.email = email} />
-                    </div>
-                        <input type="submit" value="Submit" />
+                    <input type="submit" value="Submit" />
                 </form>
             </div>
         );

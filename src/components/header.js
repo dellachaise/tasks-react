@@ -10,7 +10,8 @@ export default function Header () {
             <ul>
                 <li><Link to="/resumes" activeClassName={styles.active}>All CV</Link></li>
                 <li><Link to="/about" activeClassName={styles.active}>About</Link></li>
-                <li><Link to="/registration" activeClassName={styles.active}>Sign in/Sign up</Link></li>
+                <li><Link to="/registration" activeClassName={styles.active}>Sign up</Link></li>
+                <li><Link to="/authorization" activeClassName={styles.active}>Sign in</Link></li>
             </ul>
             <hr />
         </div>

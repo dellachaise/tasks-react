@@ -5,6 +5,7 @@ import List from "./components/list";
 import Resumes from "./components/resumes";
 import About from "./components/about";
 import Registration from "./components/registration";
+import Authorization from "./components/authorization";
 import { Router, Route, IndexRoute, browserHistory} from "react-router";
 
 ReactDOM.render(
@@ -15,6 +16,7 @@ ReactDOM.render(
             <Route path="/resumes" component={Resumes}/>
             <Route path="/about" component={About}/>
             <Route path="/registration" component={Registration}/>
+            <Route path="/authorization" component={Authorization}/>
         </Route>
     </Router>,
     document.getElementById("app")
