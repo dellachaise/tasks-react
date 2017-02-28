@@ -14,7 +14,11 @@ export default class Resumes extends React.Component {
     }
 
     componentDidMount() {
-        fetch("http://127.0.0.1:8000/resumes/")
+        fetch("http://127.0.0.1:8000/resumes/", {
+            headers: {
+                "Authorization": "JWT <token>"
+            }
+        })
             .then(response => {
                 return response.json();
             })
