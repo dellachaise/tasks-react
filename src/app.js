@@ -1,8 +1,10 @@
+import React from "react";
 import ReactDOM from "react-dom";
 import Root from "./components/root";
 import List from "./components/list";
 import Resumes from "./components/resumes";
 import About from "./components/about";
+import Registration from "./components/registration";
 import { Router, Route, IndexRoute, browserHistory} from "react-router";
 
 ReactDOM.render(
@@ -12,6 +14,7 @@ ReactDOM.render(
             <Route path="/list" component={List}/>
             <Route path="/resumes" component={Resumes}/>
             <Route path="/about" component={About}/>
+            <Route path="/registration" component={Registration}/>
         </Route>
     </Router>,
     document.getElementById("app")
