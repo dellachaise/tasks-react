@@ -24,8 +24,6 @@ export default function api(url, options) {
         if (token) {
             options.headers.Authorization = "JWT " + token;
         }
-        console.log("http://127.0.0.1:8000/" + url);
-        console.log(options);
         fetch("http://127.0.0.1:8000/" + url, options)
             .then(parseJSON)
             .then(data => resolve(data), reject);
