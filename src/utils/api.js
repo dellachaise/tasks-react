@@ -1,7 +1,7 @@
 import jwtDecode from "jwt-decode";
 
 
-function checkToken() {
+function getToken() {
     let token = localStorage.getItem("token"),
         currentData = new Date().getTime() / 1000,
         exp;
@@ -33,7 +33,7 @@ function parseJSON(response) {
 
 export default function api(url, options) {
     return new Promise((resolve, reject) => {
-        let token = checkToken();
+        let token = getToken();
 
         options = options || {};
         options = Object.assign({
