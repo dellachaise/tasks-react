@@ -6,9 +6,9 @@ function checkToken() {
         currentData = new Date().getTime() / 1000,
         exp;
 
-    // if (token === null) {
-    //     return undefined;
-    // }
+    if (token === null) {
+        return undefined;
+    }
     exp = jwtDecode(token).exp;
 
     if (exp > currentData) {
