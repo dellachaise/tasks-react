@@ -1,3 +1,23 @@
+import jwtDecode from "jwt-decode";
+
+
+function getToken() {
+    let token = localStorage.getItem("token"),
+        currentData = new Date().getTime() / 1000,
+        exp;
+
+    if (token === null) {
+        return undefined;
+    }
+    exp = jwtDecode(token).exp;
+
+    if (exp > currentData) {
+        return token;
+    }
+    localStorage.removeItem("token");
+    return undefined;
+}
+
 function parseJSON(response) {
     return new Promise(function (resolve, reject) {
         response.json().
@@ -13,7 +33,7 @@ function parseJSON(response) {
 
 export default function api(url, options) {
     return new Promise((resolve, reject) => {
-        let token = localStorage.getItem("token");
+        let token = getToken();
 
         options = options || {};
         options = Object.assign({
@@ -24,8 +44,6 @@ export default function api(url, options) {
         if (token) {
             options.headers.Authorization = "JWT " + token;
         }
-        console.log("http://127.0.0.1:8000/" + url);
-        console.log(options);
         fetch("http://127.0.0.1:8000/" + url, options)
             .then(parseJSON)
             .then(data => resolve(data), reject);
